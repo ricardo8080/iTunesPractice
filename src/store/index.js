@@ -5,9 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    s: []
+    search_list: []
   },
-  getters: {},
+  getters: {
+    getSearchItemsList(state) {
+      return state.search_list;
+    }
+  },
   mutations: {},
   actions: {},
   modules: {}
