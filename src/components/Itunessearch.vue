@@ -8,6 +8,22 @@
       <input type="text" placeholder="Search.." name="search2" />
       <button type="submit"><i class="fa fa-search"></i></button>
     </div>
+    <div class="box">
+      <div class="card">
+        <div class="imgBx">
+          <img
+            src="https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            alt="images"
+          />
+        </div>
+        <div class="details">
+          <h2>
+            Insert Album Name<br /><span>Insert Artist Name</span
+            ><span>Insert Price</span>
+          </h2>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
