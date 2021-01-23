@@ -11,12 +11,9 @@
       </button>
     </div>
     <div class="box" v-if="isEmpty">
-      <div class="card" :key="item.artist" v-for="item in searchlist">
+      <div class="card" :key="item.album" v-for="item in searchlist">
         <div class="imgBx">
-          <img
-            src="https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt="images"
-          />
+          <img :src="item.image" alt="images" />
         </div>
         <div class="details">
           <h2>
@@ -37,14 +34,7 @@ export default {
   data() {
     return {
       search_value: "",
-      search: "",
-      exampledata: {
-        image: "",
-        album: "",
-        artist: "",
-        price: 0.0
-      },
-      data: []
+      search_query: ""
     };
   },
   computed: {
@@ -60,14 +50,14 @@ export default {
     ...mapActions(["addItem", "deleteItems"]),
     async searchitems() {
       if (this.inputIsNotEmpty()) {
-        this.search =
+        this.search_query =
           "https://itunes.apple.com/search?term=" +
           this.search_value +
           "&entity=album";
         this.deleteItems();
         // Create a jquery for the iTunesApi, get all info required and save them in state search_list
         var a;
-        await $.getJSON(this.search, function(data) {
+        await $.getJSON(this.search_query, function(data) {
           a = data;
         });
         console.log(a);

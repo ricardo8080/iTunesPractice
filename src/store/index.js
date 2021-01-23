@@ -14,7 +14,9 @@ export default new Vuex.Store({
   },
   mutations: {
     mutateSearchList(state, item) {
-      state.search_list.push(item);
+      if (state.search_list.includes(item) === false) {
+        state.search_list.push(item);
+      }
     },
     mutateDeleteItems(state) {
       if (state.search_list.length > 0) {
