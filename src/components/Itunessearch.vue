@@ -10,11 +10,27 @@
         <i class="fa fa-search"></i>
       </button>
     </div>
+    <div class="box" v-if="isEmpty">
+      <div class="card" :key="item.artist" v-for="item in searchlist">
+        <div class="imgBx">
+          <img
+            src="https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            alt="images"
+          />
+        </div>
+        <div class="details">
+          <h2>
+            {{ item.album }}<br /><span>{{ item.artist }}</span
+            ><span>{{ item.price }}</span>
+          </h2>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import $ from "jquery";
 export default {
   name: "Itunes",
@@ -22,11 +38,11 @@ export default {
     return {
       search_value: "",
       search: "",
-      example: {
+      exampledata: {
         image: "",
         album: "",
         artist: "",
-        price: null
+        price: 0.0
       },
       data: []
     };
@@ -35,41 +51,48 @@ export default {
     ...mapGetters(["getSearchItemsList"]),
     searchlist() {
       return this.getSearchItemsList;
+    },
+    isEmpty() {
+      return this.searchlist.length != 0;
     }
   },
   methods: {
-    searchitems() {
-      this.search =
-        "https://itunes.apple.com/search?term=" +
-        this.search_value +
-        "&entity=album";
-      try {
-        if (this.search_value != "" && this.search_value != null) {
-          $.getJSON(this.search, function(data) {
-            this.data = data;
-            this.example.push = {
-              image: data.results[0].artworkUrl100,
-              album: data.results[0].collectionName,
-              artist: data.results[0].artistName,
-              price: data.results[0].collectionPrice
-            };
-            //this.putDataToAlbumInfoList(data);
+    ...mapActions(["addItem", "deleteItems"]),
+    async searchitems() {
+      if (this.inputIsNotEmpty()) {
+        this.search =
+          "https://itunes.apple.com/search?term=" +
+          this.search_value +
+          "&entity=album";
+        this.deleteItems();
+        // Create a jquery for the iTunesApi, get all info required and save them in state search_list
+        var a;
+        await $.getJSON(this.search, function(data) {
+          a = data;
+        });
+        console.log(a);
+        for (var i = 0; i < a.resultCount; i++) {
+          this.addItem({
+            image: a.results[i].artworkUrl100,
+            album: a.results[i].collectionName,
+            artist: a.results[i].artistName,
+            price: a.results[i].collectionPrice
           });
         }
-      } catch (error) {
-        console.log("Wrong or unnaceptable data to Search");
       }
     },
-    putDataToAlbumInfoList(data) {
+    inputIsNotEmpty() {
+      return this.search_value != "" && this.search_value != null;
+    },
+    putDataToSearchList(data) {
       for (var i = 0; i < data.resultCount; i++) {
-        this.albuminfo.push({
+        this.addItem({
           image: data.results[i].artworkUrl100,
           album: data.results[i].collectionName,
           artist: data.results[i].artistName,
           price: data.results[i].collectionPrice
         });
       }
-      console.log(this.albuminfo);
     }
   }
 };
