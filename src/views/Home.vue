@@ -24,6 +24,6 @@ export default {
 .home {
   display: inline-block;
   vertical-align: middle;
-  font-size: 100%;
+  font-size: 150%;
 }
 </style>

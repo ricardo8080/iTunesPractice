@@ -1,4 +1,4 @@
-body{
+body {
   margin: 0;
   padding: 0;
   display: flex;
@@ -8,14 +8,14 @@ body{
   background: #212121;
   font-family: sans-serif;
 }
-.box{
+.box {
   width: 1200px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 15px;
   margin: 0 auto;
 }
-.card{
+.card {
   position: relative;
   width: 300px;
   height: 350px;
@@ -25,8 +25,7 @@ body{
   box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 .card:before,
-.card:after
-{
+.card:after {
   content:"";
   position: absolute;
   top: 0;
@@ -38,49 +37,46 @@ body{
   transition: 0.5s;
   z-index:-1;
 }
-.card:hover:before{
-transform: rotate(20deg);
-box-shadow: 0 2px 20px rgba(0,0,0,.2);
+.card:hover:before {
+  transform: rotate(20deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
 }
-.card:hover:after{
-transform: rotate(10deg);
-box-shadow: 0 2px 20px rgba(0,0,0,.2);
+.card:hover:after {
+  transform: rotate(10deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
 }
-.card .imgBx{
-position: absolute;
-top: 10px;
-left: 10px;
-bottom: 10px;
-right: 10px;
-background: #222;
-transition: 0.5s;
-z-index: 1;
+.card .imgBx {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  background: #222;
+  transition: 0.5s;
+  z-index: 1;
 }
-
 .card:hover .imgBx
 {
-  bottom: 80px;
+  bottom: 120px;
 }
-
-.card .imgBx img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.card .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
-.card .details{
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    height: 60px;
-    text-align: center;
+.card .details {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  height: 100px;
+  overflow-y: scroll; 
+  text-align: center;
 }
-
-.card .details h2{
+.card .details h2 {
  margin: 0;
  padding: 0;
  font-weight: 600;
@@ -88,43 +84,41 @@ z-index: 1;
  color: #777;
  text-transform: uppercase;
 } 
-
-.card .details h2 span{
-font-weight: 500;
-font-size: 16px;
-color: #f38695;
-display: block;
-margin-top: 5px;
- } 
-  * {
-    box-sizing: border-box;
-  }
-  .example input[type="text"] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-  }
-  
-  .example button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: #2196f3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
-  }
-  .example button:hover {
-    background: #0b7dda;
-  }
-  
-  .example::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+.card .details h2 span {
+  font-weight: 500;
+  font-size: 16px;
+  color: #f38695;
+  display: block;
+  margin-top: 5px;
+} 
+* {
+  box-sizing: border-box;
+}
+.example input[type="text"] {
+  margin-bottom: 50px;
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+.example button:hover {
+  background: #0b7dda;
+}
+.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}

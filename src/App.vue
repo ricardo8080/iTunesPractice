@@ -12,7 +12,16 @@
   text-align: center;
   color: #2c3e50;
 }
-
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #212121;
+  font-family: sans-serif;
+}
 #nav {
   padding: 30px;
 }
