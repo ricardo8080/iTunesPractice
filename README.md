@@ -1,33 +1,23 @@
 # itunestest
 
+## Tutorial
+```
+Input the information necessary to search albums from your favorite authors, then click the search button, !checkout all of them!
+```
+
+## Employed Tools
+```
+Vue.JS, Jquery, Mocha + Chai, Html, Css 
+```
 ## Project setup
 ```
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
 
-### Compiles and minifies for production
-```
 npm run build
-```
 
-### Run your unit tests
-```
 npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
